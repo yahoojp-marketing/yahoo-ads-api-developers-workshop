@@ -15,7 +15,7 @@
 
 ### 認可リクエスト
 
-ブラウザでアクセスしてください。
+以下の URL にブラウザでアクセスしてください。
 
 ```http
 https://biz-oauth.yahoo.co.jp/oauth/v1/authorize
@@ -27,7 +27,7 @@ https://biz-oauth.yahoo.co.jp/oauth/v1/authorize
 
 ### トークン発行リクエスト
 
-`curl` や [Postman](https://www.getpostman.com/) などでアクセスしてください。
+以下の URL に `curl` や [Postman](https://www.getpostman.com/) などでアクセスしてください。
 ブラウザでもアクセスできますが、クライアントシークレット等がブラウザの履歴に残りますので注意してください。
 
 ```http
@@ -39,9 +39,15 @@ https://biz-oauth.yahoo.co.jp/oauth/v1/token
 &code=AUTH_CODE
 ```
 
+`curl` の場合は以下のようなコマンドになります。
+
+```sh
+curl -i "https://biz-oauth.yahoo.co.jp/oauth/v1/token?grant_type=authorization_code&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=oob&code=AUTH_CODE"
+```
+
 ### アクセストークン再発行
 
-`curl` や [Postman](https://www.getpostman.com/) などでアクセスしてください。
+以下の URL に `curl` や [Postman](https://www.getpostman.com/) などでアクセスしてください。
 ブラウザでもアクセスできますが、クライアントシークレット等がブラウザの履歴に残りますので注意してください。
 
 ```http
@@ -50,6 +56,12 @@ https://biz-oauth.yahoo.co.jp/oauth/v1/token
 &client_id=YOUR_CLIENT_ID
 &client_secret=YOUR_CLIENT_SECRET
 &refresh_token=REFRESH_TOKEN
+```
+
+`curl` の場合は以下のようなコマンドになります。
+
+```sh
+curl -i "https://biz-oauth.yahoo.co.jp/oauth/v1/token?grant_type=refresh_token&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&refresh_token=REFRESH_TOKEN"
 ```
 
 # APIリファレンス上でのAPIコール試用ハンズオン
@@ -89,8 +101,8 @@ Postmanを使う場合はこのリポジトリにある`https---ads-display.yaho
 ##  アカウントの取得
 後述のVideoService/upload(更新系操作)をするために`"authType": "UPDATABLE"`な広告アカウントを取得します。
 ### AccountService/get
-```shell
-ACCESS_TOKEN=XXX # access_tokenに置き換えてください
+```Shell
+ACCESS_TOKEN=XXX # アクセストークンに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 -H 'Content-Type: application/json' \
 https://ads-display.yahooapis.jp/api/v0/AccountService/get -d \
@@ -100,6 +112,19 @@ https://ads-display.yahooapis.jp/api/v0/AccountService/get -d \
   "includeTestAccount": "ONLY_TEST"
 }
 '
+```
+`Windowsのコマンドプロンプト` の場合は以下のようなコマンドになります。
+```Batchfile
+set ACCESS_TOKEN=XXX
+curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
+-H "Content-Type: application/json" ^
+https://ads-display.yahooapis.jp/api/v0/AccountService/get -d ^
+"^
+{^
+  \"authType\": \"UPDATABLE\",^
+  \"includeTestAccount\": \"ONLY_TEST\"^
+}^
+"
 ```
 ## レポートのダウンロード
 レポートをダウンロードするためには、事前にレポートを作成(ReportDefinitionService/add)してから、  
@@ -112,8 +137,8 @@ Yahoo!広告 APIではReportDefinitionService/addのレスポンスのreportJobI
 ReportDefinitionService/downloadのリクエストに指定してダウンロードします。  
 
 ### ReportDefinitionService/add
-```shell
-ACCESS_TOKEN=XXX # access_tokenに置き換えてください
+```Shell
+ACCESS_TOKEN=XXX # アクセストークンに置き換えてください
 ACCOUNT_ID=XXX   # アカウントIDに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 -H 'Content-Type: application/json' \
@@ -133,13 +158,36 @@ https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/add -d \
 }
 '
 ```
+`Windowsのコマンドプロンプト` の場合は以下のようなコマンドになります。
+```Batchfile
+set ACCESS_TOKEN=XXX
+set ACCOUNT_ID=XXX
+curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
+-H "Content-Type: application/json" ^
+https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/add -d ^
+"^
+{^
+  \"accountId\": %ACCOUNT_ID%,^
+  \"operand\": [^
+    {^
+      \"downloadEncode\": \"SJIS\",^
+      \"dateRangeType\": \"LAST_7_DAYS\",^
+      \"fields\": [^
+        \"ACCOUNT_ID\",^
+        \"ACCOUNT_NAME\"^
+      ]^
+    }^
+  ]^
+}^
+"
+```
 ### ReportDefinitionService/download
-```shell
-ACCESS_TOKEN=XXX  # access_tokenに置き換えてください
+```Shell
+ACCESS_TOKEN=XXX  # アクセストークンに置き換えてください
 ACCOUNT_ID=XXX    # アカウントIDに置き換えてください
 REPORT_JOB_ID=XXX # ReportDefinitionService/addのレスポンスのreportJobIdに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
--H 'Content-Type: application/json' \
+-H "Content-Type: application/json" \
 https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/download -d \
 '
 {
@@ -147,6 +195,21 @@ https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/download -d \
   "reportJobId": '${REPORT_JOB_ID}'
 }
 '
+```
+`Windowsのコマンドプロンプト` の場合は以下のようなコマンドになります。
+```Batchfile
+set ACCESS_TOKEN=XXX
+set ACCOUNT_ID=XXX
+set REPORT_JOB_ID=XXX
+curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
+-H "Content-Type: application/json" ^
+https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/download -d ^
+"^
+{^
+  \"accountId\": %ACCOUNT_ID%,^
+  \"reportJobId\": %REPORT_JOB_ID%^
+}^
+"
 ```
 ## ビデオのアップロード
 ビデオのアップロードはリクエストパラメータはQueryString形式でURLに付与し、  
@@ -158,19 +221,27 @@ Yahoo!プロモーション広告API(旧API)ではビデオのアップロード
 https://github.com/yahoojp-marketing/ydn-api-documents/blob/master/docs/ja/api_reference/services/VideoService.md#getuploadurl  
 Yahoo!広告 APIではVideoService/uploadで直接行えます。
 ### VideoService/upload
-```
-ACCESS_TOKEN=XXX               # access_tokenに置き換えてください
+```Shell
+ACCESS_TOKEN=XXX               # アクセストークンに置き換えてください
 ACCOUNT_ID=XXX                 # アカウントIDに置き換えてください
 VIDEO_FILE=/path/to/sample.mp4 # アップロードするvideoファイルのパスに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 "https://ads-display.yahooapis.jp/api/v0/VideoService/upload?accountId=${ACCOUNT_ID}&videoName=video_name.mp4&videoTitle=video_title&userStatus=ACTIVE" \
--F "file=@${VIDEO_FILE}"
+-F file=@${VIDEO_FILE}
 ```
-
+`Windowsのコマンドプロンプト` の場合は以下のようなコマンドになります。
+```Batchfile
+set ACCESS_TOKEN=XXX
+set ACCOUNT_ID=XXX
+set VIDEO_FILE=C:\path\to\sample.mp4
+curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
+https://ads-display.yahooapis.jp/api/v0/VideoService/upload?accountId=%ACCOUNT_ID%^&videoName=video_name.mp4^&videoTitle=video_title^&userStatus=ACTIVE ^
+-F file=@%VIDEO_FILE%
+```
 ## appendix
 ### VideoService/get
-```
-ACCESS_TOKEN=XXX # access_tokenに置き換えてください
+```Shell
+ACCESS_TOKEN=XXX # アクセストークンに置き換えてください
 ACCOUNT_ID=XXX   # アカウントIDに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 -H 'Content-Type: application/json' \
@@ -181,14 +252,28 @@ https://ads-display.yahooapis.jp/api/v0/VideoService/get -d \
 }
 '
 ```
+`Windowsのコマンドプロンプト` の場合は以下のようなコマンドになります。
+```Batchfile
+set ACCESS_TOKEN=XXX
+set ACCOUNT_ID=XXX
+curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
+-H "Content-Type: application/json" ^
+https://ads-display.yahooapis.jp/api/v0/VideoService/get -d ^
+"^
+{^
+  \"accountId\": %ACCOUNT_ID%^
+}^
+"
+```
 
 ### VideoService/download
-```
-ACCESS_TOKEN=XXX # access_tokenに置き換えてください
+```Shell
+ACCESS_TOKEN=XXX # アクセストークンに置き換えてください
 ACCOUNT_ID=XXX   # アカウントIDに置き換えてください
 MEDIA_ID=XXX     # VideoService/uploadのレスポンスのmediaIdに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 -H 'Content-Type: application/json' \
+-o downloadedVideo.mp4 \
 https://ads-display.yahooapis.jp/api/v0/VideoService/download -d \
 '
 {
@@ -198,9 +283,27 @@ https://ads-display.yahooapis.jp/api/v0/VideoService/download -d \
 }
 '
 ```
-### VideoService/remove
+`Windowsのコマンドプロンプト` の場合は以下のようなコマンドになります。
+```Batchfile
+set ACCESS_TOKEN=XXX
+set ACCOUNT_ID=XXX
+set MEDIA_ID=XXX
+curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
+-H "Content-Type: application/json" ^
+-o downloadedVideo.mp4 ^
+https://ads-display.yahooapis.jp/api/v0/VideoService/download -d ^
+"^
+{^
+  \"accountId\": %ACCOUNT_ID%,^
+  \"mediaId\": %MEDIA_ID%,^
+  \"qualityType\": \"ORIGINAL\"^
+}^
+"
 ```
-ACCESS_TOKEN=XXX # access_tokenに置き換えてください
+
+### VideoService/remove
+```Shell
+ACCESS_TOKEN=XXX # アクセストークンに置き換えてください
 ACCOUNT_ID=XXX   # アカウントIDに置き換えてください
 MEDIA_ID=XXX     # VideoService/uploadのレスポンスのmediaIdに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
@@ -217,4 +320,24 @@ https://ads-display.yahooapis.jp/api/v0/VideoService/remove -d \
   ]
 }
 '
+```
+`Windowsのコマンドプロンプト` の場合は以下のようなコマンドになります。
+```Batchfile
+set ACCESS_TOKEN=XXX
+set ACCOUNT_ID=XXX
+set MEDIA_ID=XXX
+curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
+-H "Content-Type: application/json" ^
+https://ads-display.yahooapis.jp/api/v0/VideoService/remove -d ^
+"^
+{^
+  \"accountId\": %ACCOUNT_ID%,^
+  \"operand\": [^
+    {^
+      \"accountId\": %ACCOUNT_ID%,^
+      \"mediaId\": %MEDIA_ID%^
+    }^
+  ]^
+}^
+"
 ```
