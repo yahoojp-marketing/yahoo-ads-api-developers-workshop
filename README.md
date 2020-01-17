@@ -187,7 +187,7 @@ ACCESS_TOKEN=XXX  # アクセストークンに置き換えてください
 ACCOUNT_ID=XXX    # アカウントIDに置き換えてください
 REPORT_JOB_ID=XXX # ReportDefinitionService/addのレスポンスのreportJobIdに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
--H "Content-Type: application/json" \
+-H 'Content-Type: application/json' \
 https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/download -d \
 '
 {
