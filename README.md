@@ -15,7 +15,7 @@
 
 ### 認可リクエスト
 
-以下の URL にブラウザでアクセスしてください。
+以下の[認可リクエスト URL](https://biz-oauth.yahoo.co.jp/oauth/v1/authorize?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=oob&scope=yahooads) にブラウザでアクセスしてください。
 
 ```http
 https://biz-oauth.yahoo.co.jp/oauth/v1/authorize
@@ -27,7 +27,7 @@ https://biz-oauth.yahoo.co.jp/oauth/v1/authorize
 
 ### トークン発行リクエスト
 
-以下の URL に `curl` や [Postman](https://www.getpostman.com/) などでアクセスしてください。
+以下の[トークン発行リクエスト URL](https://biz-oauth.yahoo.co.jp/oauth/v1/token?grant_type=authorization_code&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=oob&code=AUTH_CODE) に `curl` や [Postman](https://www.getpostman.com/) などでアクセスしてください。
 ブラウザでもアクセスできますが、クライアントシークレット等がブラウザの履歴に残りますので注意してください。
 
 ```http
@@ -39,7 +39,7 @@ https://biz-oauth.yahoo.co.jp/oauth/v1/token
 &code=AUTH_CODE
 ```
 
-`curl` の場合は以下のようなコマンドになります。
+`curl` の場合は以下のコマンドになります。
 
 ```sh
 curl -i "https://biz-oauth.yahoo.co.jp/oauth/v1/token?grant_type=authorization_code&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=oob&code=AUTH_CODE"
@@ -47,7 +47,7 @@ curl -i "https://biz-oauth.yahoo.co.jp/oauth/v1/token?grant_type=authorization_c
 
 ### アクセストークン再発行
 
-以下の URL に `curl` や [Postman](https://www.getpostman.com/) などでアクセスしてください。
+以下の[アクセストークン再発行 URL](https://biz-oauth.yahoo.co.jp/oauth/v1/token?grant_type=refresh_token&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&refresh_token=REFRESH_TOKEN) に `curl` や [Postman](https://www.getpostman.com/) などでアクセスしてください。
 ブラウザでもアクセスできますが、クライアントシークレット等がブラウザの履歴に残りますので注意してください。
 
 ```http
@@ -58,7 +58,7 @@ https://biz-oauth.yahoo.co.jp/oauth/v1/token
 &refresh_token=REFRESH_TOKEN
 ```
 
-`curl` の場合は以下のようなコマンドになります。
+`curl` の場合は以下のコマンドになります。
 
 ```sh
 curl -i "https://biz-oauth.yahoo.co.jp/oauth/v1/token?grant_type=refresh_token&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&refresh_token=REFRESH_TOKEN"
