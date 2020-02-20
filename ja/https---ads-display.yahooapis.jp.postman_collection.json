@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "537cafd7-4a40-456e-a2c6-708b8f7b6a9e",
+		"name": "https://ads-display.yahooapis.jp",
+		"description": "https://yahoojp-marketing.github.io/ads-display-api-documents/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/v0/AccountService/get",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"authType\": \"UPDATABLE\",\n  \"includeTestAccount\": \"ONLY_TEST\"\n}"
+				},
+				"url": {
+					"raw": "https://ads-display.yahooapis.jp/api/v0/AccountService/get",
+					"protocol": "https",
+					"host": [
+						"ads-display",
+						"yahooapis",
+						"jp"
+					],
+					"path": [
+						"api",
+						"v0",
+						"AccountService",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v0/ReportDefinitionService/add",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"accountId\": {{ACCOUNT_ID}},\n  \"operand\": [\n    {\n      \"dateRangeType\": \"LAST_7_DAYS\",\n      \"fields\": [\n        \"ACCOUNT_ID\",\n        \"ACCOUNT_NAME\"\n      ]\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/add",
+					"protocol": "https",
+					"host": [
+						"ads-display",
+						"yahooapis",
+						"jp"
+					],
+					"path": [
+						"api",
+						"v0",
+						"ReportDefinitionService",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v0/ReportDefinitionService/download",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"accountId\": {{ACCOUNT_ID}},\n  \"reportJobId\": {{REPORT_JOB_ID}}\n}"
+				},
+				"url": {
+					"raw": "https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/download",
+					"protocol": "https",
+					"host": [
+						"ads-display",
+						"yahooapis",
+						"jp"
+					],
+					"path": [
+						"api",
+						"v0",
+						"ReportDefinitionService",
+						"download"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v0/VideoService/upload",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ACCESS_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/kazumkob/Downloads/sample.mp4"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://ads-display.yahooapis.jp/api/v0/VideoService/upload?accountId={{ACCOUNT_ID}}&videoName=video_name.mp4&videoTitle=video_title&userStatus=ACTIVE",
+					"protocol": "https",
+					"host": [
+						"ads-display",
+						"yahooapis",
+						"jp"
+					],
+					"path": [
+						"api",
+						"v0",
+						"VideoService",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "accountId",
+							"value": "{{ACCOUNT_ID}}"
+						},
+						{
+							"key": "videoName",
+							"value": "video_name.mp4"
+						},
+						{
+							"key": "videoTitle",
+							"value": "video_title"
+						},
+						{
+							"key": "userStatus",
+							"value": "ACTIVE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v0/VideoService/get",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"accountId\": {{ACCOUNT_ID}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ads-display.yahooapis.jp/api/v0/VideoService/get",
+					"protocol": "https",
+					"host": [
+						"ads-display",
+						"yahooapis",
+						"jp"
+					],
+					"path": [
+						"api",
+						"v0",
+						"VideoService",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v0/VideoService/remove",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"accountId\": {{ACCOUNT_ID}},\n  \"operand\": [\n    {\n      \"accountId\": {{ACCOUNT_ID}},\n      \"mediaId\": {{MEDIA_ID}}\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ads-display.yahooapis.jp/api/v0/VideoService/remove",
+					"protocol": "https",
+					"host": [
+						"ads-display",
+						"yahooapis",
+						"jp"
+					],
+					"path": [
+						"api",
+						"v0",
+						"VideoService",
+						"remove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v0/VideoService/download",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"accountId\": {{ACCOUNT_ID}},\n  \"mediaId\": {{MEDIA_ID}},\n  \"qualityType\": \"ORIGINAL\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ads-display.yahooapis.jp/api/v0/VideoService/download",
+					"protocol": "https",
+					"host": [
+						"ads-display",
+						"yahooapis",
+						"jp"
+					],
+					"path": [
+						"api",
+						"v0",
+						"VideoService",
+						"download"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5722ef9e-721b-48a0-a5ce-cd9c779a3ff9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "79eba026-6883-46c3-88d0-490d845d888d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "03f40ce2-f502-4248-845f-45e0364dc1cc",
+			"key": "ACCESS_TOKEN",
+			"value": "__REPLACE_ME__",
+			"type": "string"
+		},
+		{
+			"id": "97e3f4cc-dd39-4a99-b52c-db4994c32fa3",
+			"key": "ACCOUNT_ID",
+			"value": "__REPLACE_ME__",
+			"type": "string"
+		},
+		{
+			"id": "17a004f8-0a71-4b01-b4f9-1333a5c62e73",
+			"key": "REPORT_JOB_ID",
+			"value": "__REPLACE_ME__",
+			"type": "string"
+		},
+		{
+			"id": "f5f5f727-3695-4072-b72f-41aa51dfb91f",
+			"key": "MEDIA_ID",
+			"value": "__REPLACE_ME__",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
