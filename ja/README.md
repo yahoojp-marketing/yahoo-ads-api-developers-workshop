@@ -72,18 +72,15 @@ APIリファレンスのリダイレクトURIは、登録アプリケーショ�
 
 [登録アプリケーション画面](https://connect-business.yahoo.co.jp/client/list)
 
-ハンズオンでは [Yahoo!広告 ディスプレイ広告 API リファレンス](https://yahoojp-marketing.github.io/ads-display-api-documents/) を使用します。
-リダイレクト URI: `https://yahoojp-marketing.github.io/ads-display-api-documents/oauth2-redirect.html`
-
-なお、[Yahoo!広告 検索広告 API リファレンス](https://yahoojp-marketing.github.io/ads-search-api-documents/)と[Yahoo!広告 ディスプレイ広告 API リファレンス](https://yahoojp-marketing.github.io/ads-display-api-documents/)で**登録するリダイレクトURIが異なります**ので注意してください。
+ハンズオンでは [Yahoo!広告 ディスプレイ広告 API リファレンス](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ) を使用します。
 
 ## 2. 認可
 
-[Yahoo!広告 ディスプレイ広告 API リファレンス](https://yahoojp-marketing.github.io/ads-display-api-documents/) の `Authorize` ボタンから認可します。
+[Yahoo!広告 ディスプレイ広告 API リファレンス](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ) の `Authorize` ボタンから認可します。
 
 ## 3. APIリファレンス上でAPIコール
 
-[Yahoo!広告 ディスプレイ広告 API リファレンス](https://yahoojp-marketing.github.io/ads-display-api-documents/) の `Try it out` ボタンからAPIコールします。
+[Yahoo!広告 ディスプレイ広告 API リファレンス](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ) の `Try it out` ボタンからAPIコールします。
 ハンズオンでは `AccountService/get` を使用してみます。
 
 リクエストボディ:
