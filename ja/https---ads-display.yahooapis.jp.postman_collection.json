@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "537cafd7-4a40-456e-a2c6-708b8f7b6a9e",
 		"name": "https://ads-display.yahooapis.jp",
-		"description": "https://yahoojp-marketing.github.io/ads-display-api-documents/",
+		"description": "https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [

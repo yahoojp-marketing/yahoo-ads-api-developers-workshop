@@ -73,18 +73,15 @@ Redirect URI of API Reference can be added on "Added applications" screen.
 
 [Added applications screen](https://connect-business.yahoo.co.jp/client/list)
 
-During this Hands-on, we use [Yahoo! Ads Display Ads API Reference](https://yahoojp-marketing.github.io/ads-display-api-documents/?lang=en). 
-Redirect URI: `https://yahoojp-marketing.github.io/ads-display-api-documents/oauth2-redirect.html`
-
-Please make sure that the Redirect URI to be added is different between on [Yahoo! Ads Search Ads API Reference](https://yahoojp-marketing.github.io/ads-search-api-documents/?lang=en) and on [Yahoo! Ads Display Ads API Reference](https://yahoojp-marketing.github.io/ads-display-api-documents/?lang=en).
+During this Hands-on, we use [Yahoo! Ads Display Ads API Reference](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ?lang=en). 
 
 ## 2. Authorization
 
-For authorization, use the `Authorize` button on [Yahoo! Ads Display Ads API Reference](https://yahoojp-marketing.github.io/ads-display-api-documents/?lang=en).
+For authorization, use the `Authorize` button on [Yahoo! Ads Display Ads API Reference](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ?lang=en).
 
 ## 3. API Call on API Reference
 
-For API Call, use the `Try it out` button on [Yahoo! Ads Display Ads API Reference](https://yahoojp-marketing.github.io/ads-display-api-documents/).
+For API Call, use the `Try it out` button on [Yahoo! Ads Display Ads API Reference](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ).
 During this Hands-on, let’s use `AccountService/get`.
 
 Request body:
