@@ -73,15 +73,15 @@ Redirect URI of API Reference can be added on "Added applications" screen.
 
 [Added applications screen](https://connect-business.yahoo.co.jp/client/list)
 
-During this Hands-on, we use [Yahoo! Ads Display Ads API Reference](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ?lang=en). 
+During this Hands-on, we use [Yahoo! JAPAN Ads Display Ads API Reference](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ?lang=en). 
 
 ## 2. Authorization
 
-For authorization, use the `Authorize` button on [Yahoo! Ads Display Ads API Reference](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ?lang=en).
+For authorization, use the `Authorize` button on [Yahoo! JAPAN Ads Display Ads API Reference](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ?lang=en).
 
 ## 3. API Call on API Reference
 
-For API Call, use the `Try it out` button on [Yahoo! Ads Display Ads API Reference](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ).
+For API Call, use the `Try it out` button on [Yahoo! JAPAN Ads Display Ads API Reference](https://ads-developers.yahoo.co.jp/reference/ads-display-api/ ).
 During this Hands-on, let’s use `AccountService/get`.
 
 Request body:
@@ -92,7 +92,7 @@ Request body:
 }
 ```
 
-# Yahoo! Ads API Hands-on
+# Yahoo! JAPAN Ads API Hands-on
 Access with `curl` or [Postman](https://www.getpostman.com/).  
 When using Postman, import `https---ads-display.yahooapis.jp.postman_collection.json` in this repository, and rewrite its Variables.  
 
@@ -130,7 +130,7 @@ For downloading reports, create report (ReportDefinitionService/add) first, then
 
 ** Downloading reports on Yahoo! JAPAN Promotional Ads API (former API) is done with the Response URL of ReportDefinitionService/get,
 https://github.com/yahoojp-marketing/ydn-api-documents/blob/master/docs/en/api_reference/services/ReportDefinitionService.md#get  
-however on Yahoo! Ads API, specify reportJobId of ReportDefinitionService/add on the request of ReportDefinitionService/download for downloading reports. 
+however on Yahoo! JAPAN Ads API, specify reportJobId of ReportDefinitionService/add on the request of ReportDefinitionService/download for downloading reports. 
 
 ### ReportDefinitionService/add
 ```Shell
@@ -213,7 +213,7 @@ Use `sample.mp4` in this repository as a video for uploading.
 
 ** Uploading videos on Yahoo! JAPAN Promotional Ads API (former API) is done with the Response URL of VideoService/getUploadUrl,  
 https://github.com/yahoojp-marketing/ydn-api-documents/blob/master/docs/en/api_reference/services/VideoService.md#getuploadurl  
-however on Yahoo! Ads API, you can upload directly by using VideoService/upload.
+however on Yahoo! JAPAN Ads API, you can upload directly by using VideoService/upload.
 ### VideoService/upload
 ```Shell
 ACCESS_TOKEN=XXX # Rewrite with your Access Token
