@@ -1,4 +1,4 @@
-# Yahoo! Ads API Developers Workshop
+# Yahoo! Ads API Workshops/Webinars
 
 ## [English](/en/)
 ## [Japanese](/ja/)
