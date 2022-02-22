@@ -102,11 +102,10 @@ Postmanを使う場合はこのリポジトリにある`https---ads-display.yaho
 ACCESS_TOKEN=XXX # アクセストークンに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 -H 'Content-Type: application/json' \
-https://ads-display.yahooapis.jp/api/v0/AccountService/get -d \
+https://ads-display.yahooapis.jp/api/v7/AccountService/get -d \
 '
 {
-  "authType": "UPDATABLE",
-  "includeTestAccount": "ONLY_TEST"
+  "authType": "UPDATABLE"
 }
 '
 ```
@@ -115,7 +114,7 @@ https://ads-display.yahooapis.jp/api/v0/AccountService/get -d \
 set ACCESS_TOKEN=XXX
 curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
 -H "Content-Type: application/json" ^
-https://ads-display.yahooapis.jp/api/v0/AccountService/get -d ^
+https://ads-display.yahooapis.jp/api/v7/AccountService/get -d ^
 "^
 {^
   \"authType\": \"UPDATABLE\",^
@@ -139,13 +138,13 @@ ACCESS_TOKEN=XXX # アクセストークンに置き換えてください
 ACCOUNT_ID=XXX   # アカウントIDに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 -H 'Content-Type: application/json' \
-https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/add -d \
+https://ads-display.yahooapis.jp/api/v7/ReportDefinitionService/add -d \
 '
 {
   "accountId": '${ACCOUNT_ID}',
   "operand": [
     {
-      "dateRangeType": "LAST_7_DAYS",
+      "reportDateRangeType": "LAST_7_DAYS",
       "fields": [
         "ACCOUNT_ID",
         "ACCOUNT_NAME"
@@ -161,14 +160,14 @@ set ACCESS_TOKEN=XXX
 set ACCOUNT_ID=XXX
 curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
 -H "Content-Type: application/json" ^
-https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/add -d ^
+https://ads-display.yahooapis.jp/api/v7/ReportDefinitionService/add -d ^
 "^
 {^
   \"accountId\": %ACCOUNT_ID%,^
   \"operand\": [^
     {^
       \"downloadEncode\": \"SJIS\",^
-      \"dateRangeType\": \"LAST_7_DAYS\",^
+      \"reportDateRangeType\": \"LAST_7_DAYS\",^
       \"fields\": [^
         \"ACCOUNT_ID\",^
         \"ACCOUNT_NAME\"^
@@ -185,7 +184,7 @@ ACCOUNT_ID=XXX    # アカウントIDに置き換えてください
 REPORT_JOB_ID=XXX # ReportDefinitionService/addのレスポンスのreportJobIdに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 -H 'Content-Type: application/json' \
-https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/download -d \
+https://ads-display.yahooapis.jp/api/v7/ReportDefinitionService/download -d \
 '
 {
   "accountId": '${ACCOUNT_ID}',
@@ -200,7 +199,7 @@ set ACCOUNT_ID=XXX
 set REPORT_JOB_ID=XXX
 curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
 -H "Content-Type: application/json" ^
-https://ads-display.yahooapis.jp/api/v0/ReportDefinitionService/download -d ^
+https://ads-display.yahooapis.jp/api/v7/ReportDefinitionService/download -d ^
 "^
 {^
   \"accountId\": %ACCOUNT_ID%,^
@@ -223,7 +222,7 @@ ACCESS_TOKEN=XXX               # アクセストークンに置き換えてく�
 ACCOUNT_ID=XXX                 # アカウントIDに置き換えてください
 VIDEO_FILE=/path/to/sample.mp4 # アップロードするvideoファイルのパスに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
-"https://ads-display.yahooapis.jp/api/v0/VideoService/upload?accountId=${ACCOUNT_ID}&videoName=video_name.mp4&videoTitle=video_title&userStatus=ACTIVE" \
+"https://ads-display.yahooapis.jp/api/v7/VideoService/upload?accountId=${ACCOUNT_ID}&videoName=video_name.mp4&videoTitle=video_title&userStatus=ACTIVE" \
 -F file=@${VIDEO_FILE}
 ```
 `Windowsのコマンドプロンプト` の場合は以下のようなコマンドになります。
@@ -232,7 +231,7 @@ set ACCESS_TOKEN=XXX
 set ACCOUNT_ID=XXX
 set VIDEO_FILE=C:\path\to\sample.mp4
 curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
-https://ads-display.yahooapis.jp/api/v0/VideoService/upload?accountId=%ACCOUNT_ID%^&videoName=video_name.mp4^&videoTitle=video_title^&userStatus=ACTIVE ^
+https://ads-display.yahooapis.jp/api/v7/VideoService/upload?accountId=%ACCOUNT_ID%^&videoName=video_name.mp4^&videoTitle=video_title^&userStatus=ACTIVE ^
 -F file=@%VIDEO_FILE%
 ```
 ## appendix
@@ -242,7 +241,7 @@ ACCESS_TOKEN=XXX # アクセストークンに置き換えてください
 ACCOUNT_ID=XXX   # アカウントIDに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 -H 'Content-Type: application/json' \
-https://ads-display.yahooapis.jp/api/v0/VideoService/get -d \
+https://ads-display.yahooapis.jp/api/v7/VideoService/get -d \
 '
 {
   "accountId": '${ACCOUNT_ID}'
@@ -255,7 +254,7 @@ set ACCESS_TOKEN=XXX
 set ACCOUNT_ID=XXX
 curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
 -H "Content-Type: application/json" ^
-https://ads-display.yahooapis.jp/api/v0/VideoService/get -d ^
+https://ads-display.yahooapis.jp/api/v7/VideoService/get -d ^
 "^
 {^
   \"accountId\": %ACCOUNT_ID%^
@@ -271,7 +270,7 @@ MEDIA_ID=XXX     # VideoService/uploadのレスポンスのmediaIdに置き換�
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 -H 'Content-Type: application/json' \
 -o downloadedVideo.mp4 \
-https://ads-display.yahooapis.jp/api/v0/VideoService/download -d \
+https://ads-display.yahooapis.jp/api/v7/VideoService/download -d \
 '
 {
   "accountId": '${ACCOUNT_ID}',
@@ -288,7 +287,7 @@ set MEDIA_ID=XXX
 curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
 -H "Content-Type: application/json" ^
 -o downloadedVideo.mp4 ^
-https://ads-display.yahooapis.jp/api/v0/VideoService/download -d ^
+https://ads-display.yahooapis.jp/api/v7/VideoService/download -d ^
 "^
 {^
   \"accountId\": %ACCOUNT_ID%,^
@@ -305,7 +304,7 @@ ACCOUNT_ID=XXX   # アカウントIDに置き換えてください
 MEDIA_ID=XXX     # VideoService/uploadのレスポンスのmediaIdに置き換えてください
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 -H 'Content-Type: application/json' \
-https://ads-display.yahooapis.jp/api/v0/VideoService/remove -d \
+https://ads-display.yahooapis.jp/api/v7/VideoService/remove -d \
 '
 {
   "accountId": '${ACCOUNT_ID}',
@@ -325,7 +324,7 @@ set ACCOUNT_ID=XXX
 set MEDIA_ID=XXX
 curl -H "Authorization: Bearer %ACCESS_TOKEN%" ^
 -H "Content-Type: application/json" ^
-https://ads-display.yahooapis.jp/api/v0/VideoService/remove -d ^
+https://ads-display.yahooapis.jp/api/v7/VideoService/remove -d ^
 "^
 {^
   \"accountId\": %ACCOUNT_ID%,^
