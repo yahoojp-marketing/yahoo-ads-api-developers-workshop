@@ -6,3 +6,4 @@
 ## [Yahoo! JAPAN Ads API Webinar](./202103_webinar/) 2021/03
 ## [Yahoo! JAPAN Ads API Webinar](./202106_webinar/) 2021/06
 ## [Yahoo! JAPAN Ads API Webinar](./202205_webinar/) 2022/05
+## [Yahoo! JAPAN Ads API Webinar](./202209_webinar/) 2022/09
